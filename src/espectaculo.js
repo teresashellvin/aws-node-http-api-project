@@ -2,7 +2,7 @@
 const { v4 } = require("uuid");
 const AWS = require("aws-sdk");
 
-const kaamDikhao = async (event) => {
+const espectaculo = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
   let kaam;
