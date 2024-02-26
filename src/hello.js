@@ -5,7 +5,7 @@ const hello = async (event) => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: "Hello From TWS Batch 5 - You all are awesome!",
+        message: "hi Teresa Shellvin",
       },
       null,
       2
