@@ -5,23 +5,23 @@ const AWS = require("aws-sdk");
 const espectaculo = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
-  let kaam;
+  let stuff;
 
   try{
   const result = await dynamoDb.scan({
-    TableName: "KaamKaro"
+    TableName: "dynamocloud"
   }).promise();
-  kaam = result.Items;
+  stuff = result.Items;
   }catch(err){
     console.log(err);
   }
   
   return {
     statusCode: 200,
-    body: JSON.stringify(kaam),
+    body: JSON.stringify(stuff),
     };
 };
 
 module.exports = {
-    handler: kaamDikhao,
+    handler: espectaculo,
 };
