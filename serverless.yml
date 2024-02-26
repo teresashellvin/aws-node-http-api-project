@@ -1,4 +1,4 @@
-org: trainwithshubham
+org: teresashellvin
 app: aws-node-http-api-project
 service: aws-node-http-api-project
 frameworkVersion: '3'
@@ -6,13 +6,13 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
-  region: us-east-1
+  region: us-east-2
   iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:*
       Resource:
-        - arn:aws:dynamodb:us-east-1:626072240565:table/KaamKaro
+        - arn:aws:dynamodb:us-east-2:188362000616:table/dynamocloud
 
 functions:
   hello:
@@ -21,35 +21,37 @@ functions:
       - httpApi:
           path: /
           method: get
-  kaamBharo:
-    handler: src/kaamBharo.handler
+  fillin:
+    handler: src/fillin.handler
     events:
       - httpApi:
-          path: /kaam
+          path: /stuff
           method: post
-  kaamDikhao:
-    handler: src/kaamDikhao.handler
+  espectaculo:
+    handler: src/espectaculo.handler
     events:
       - httpApi:
-          path: /kaam
+          path: /stuff
           method: get
-  kaamKhatamKaro:
-    handler: src/kaamKhatamKaro.handler
+  finalizar:
+    handler: src/finalizar.handler
     events:
       - httpApi:
-          path: /kaam/{id}
+          path: /stuff/{id}
           method: put
 
 resources:
   Resources:
-    KaamKaro:
+    dynamocloud:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: KaamKaro
+        TableName: dynamocloud
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
         KeySchema:
           - AttributeName: id
+            KeyType: HASH
+
             KeyType: HASH
